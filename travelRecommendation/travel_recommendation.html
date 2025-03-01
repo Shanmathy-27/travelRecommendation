@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation Website</title>
+    <style>
+        /* Set the background image for the entire page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/free-photo/pouch-map-toy-airplane-blue-background-with-space-writing-text_23-2147958180.jpg'); /* Set your image URL here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white; /* Ensure text is visible on the background */
+        }
+
+        /* Style for the header */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for nav */
+            padding: 10px;
+            text-align: center;
+        }
+        
+        nav a {
+            color: white;
+            margin-right: 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container styles */
+        .container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for content */
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+
+        .intro img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #555;
+        }
+
+        .section {
+            display: none;
+        }
+
+        /* Recommendations section styling */
+        .recommendations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .recommendation {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 30%;
+        }
+
+        .recommendation img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .recommendation h3 {
+            text-align: center;
+        }
+
+        /* Text styling for forms */
+        label {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Travel Recommendation Website</h1>
+
+    <!-- Navbar -->
+    <nav>
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('about')">About Us</a>
+        <a onclick="showSection('contact')">Contact Us</a>
+        <input type="text" id="searchInput" placeholder="Search destinations">
+        <button onclick="searchDestination()">Search</button>
+        <button onclick="resetSearch()">Reset</button>
+    </nav>
+
+    <!-- Homepage Section -->
+    <div id="home" class="container section">
+        <h2>Welcome to Our Travel Website!</h2>
+        <p>We offer personalized travel recommendations to make your next adventure unforgettable!</p>
+        
+        <!-- Recommendations will appear here -->
+        <div id="recommendations" class="recommendations"></div>
+    </div>
+
+    <!-- About Us Section -->
+    <div id="about" class="container section">
+        <h2>About Us</h2>
+        <p>We are passionate travelers who want to make exploring the world easier and more enjoyable for everyone. Our website offers tailored travel recommendations to help you discover new destinations based on your preferences.</p>
+        <li>We specialize in providing personalized travel recommendations. Our team ensures that every travel suggestion aligns with your interests, whether it's adventure, relaxation, or cultural experiences.</li>
+        <l1> we are a team of dedicated travel enthusiasts with years of experience in the travel industry. Our goal is to provide you with personalized, hassle-free travel services tailored to your preferences. We understand that each traveler is unique, and we strive to craft experiences that fit your needs, budget, and interests.</li>
+         <h3>Our Services</h3>
+
+        <li> Custom Itineraries: We offer personalized travel itineraries designed just for you. From flights to accommodations, activities, and dining, we help you plan every detail of your trip.</li>
+        <li>Expert Recommendations: Our team includes seasoned travel experts who provide local insights, hidden gems, and the best things to do in your destination. You wont miss out on any must-see!</li>
+        <li> Flight and Hotel Booking:We offer the best deals on flights, hotels, and transportation, ensuring that your trip is affordable and comfortable.</li>
+         <li>Group and Corporate Travel:Planning a business trip or a family vacation? We offer group packages and corporate travel services designed to meet the needs of larger groups.</li>
+         <li>24/7 Support:From the moment you start planning until you return home, we provide 24/7 customer support to assist with any issues, changes, or emergencies.</li>
+         
+         <h3>Why Choose Us?</h3>
+         <li>Personalized Travel Experience We take the time to understand your travel preferences and create a tailored plan that suits you perfectly.</li>
+         <li>Expertise and Local Knowledge: With years of experience and a deep understanding of global destinations, we offer insider knowledge and tips that you won’t find in typical guidebooks.</li>
+         <li>End-to-End Service: From booking your flight to suggesting activities, we provide all the services you need for a stress-free trip.</li>
+         <li>Transparent Pricing: No hidden fees or surprise charges. We offer clear and honest pricing, ensuring that you get the best value for your money.</li>
+     
+         <h3>Our Team</h3>
+         <li><strong>John Doe</strong> - CEO</li>
+         <li><strong>Jane Smith</strong> - Travel Expert</li>
+         <li><strong>Mark Johnson</strong> - Marketing Lead</li>
+         <li><strong>Emily Davis</strong> - Customer Support</li>
+
+    
+    
+    </div>
+
+    <!-- Contact Us Section -->
+    <div id="contact" class="container section">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Function to show the correct section
+        function showSection(section) {
+            // Hide all sections
+            let sections = document.querySelectorAll('.section');
+            sections.forEach(function (el) {
+                el.style.display = 'none';
+            });
+            
+            // Show the selected section
+            document.getElementById(section).style.display = 'block';
+        }
+
+        // Show the homepage by default
+        showSection('home');
+
+        // Sample JSON data
+        const data = {
+            "countries": [
+                {
+                    "id": 1,
+                    "name": "Australia",
+                    
+                            "imageUrl": "https://annaeverywhere.com/wp-content/uploads/2017/04/Circular-Quay_Charlotte-Karp.jpg",
+                            "description": "A vibrant city known for its iconic landmarks like the Sydney Opera House and Sydney Harbour Bridge."
+                        },
+                     
+                          
+                {
+                    "id": 2,
+                    "name": "Japan",
+                    
+                            "imageUrl": "https://assets.tripsmiths.com/images/listing-480/527441-shutterstock-1513825088.jpg",
+                            "description": "A bustling metropolis blending tradition and modernity, famous for its cherry blossoms and rich culture."
+                        },
+                        
+                        {
+                    "id": 3,
+                    "name": "Brazil",
+                    
+                            "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Cidade_Maravilhosa.jpg/800px-Cidade_Maravilhosa.jpg",
+                            "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
+                        },        
+                              
+            ],
+            "temples": [
+                {
+                    "id": 1,
+                    "name": "Angkor Wat, Cambodia",
+                    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/20171126_Angkor_Wat_4712_DxO.jpg/405px-20171126_Angkor_Wat_4712_DxO.jpg",
+                    "description": "A UNESCO World Heritage site and the largest religious monument in the world."
+                },
+                {
+                    "id": 2,
+                    "name": "Taj Mahal, India",
+                    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/375px-Taj_Mahal_%28Edited%29.jpeg",
+                    "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
+                }
+            ],
+            "beaches": [
+                {
+                    "id": 1,
+                    "name": "Bora Bora, French Polynesia",
+                    "imageUrl": "https://boraboraphotos.com/wp-content/uploads/2012/12/bora-bora-white-sand-beach.jpg",
+                    "description": "An island known for its stunning turquoise waters and luxurious overwater bungalows."
+                },
+                {
+                    "id": 2,
+                    "name": "Copacabana Beach, Brazil",
+                    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Rio_de_janeiro_copacabana_beach_2010.JPG/1200px-Rio_de_janeiro_copacabana_beach_2010.JPG",
+                    "description": "A famous beach in Rio de Janeiro, Brazil, with a vibrant atmosphere and scenic views."
+                }
+            ]
+        };
+
+        // Search Button Functionality
+        function searchDestination() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase().trim();  // Get and clean up the search term
+            const recommendationsContainer = document.getElementById('recommendations');
+            recommendationsContainer.innerHTML = '';  // Clear previous results
+
+            let recommendations = [];
+
+            // Check for singular/plural and match keywords
+            if (searchValue === 'beach' || searchValue === 'beaches') {
+                recommendations = data.beaches;
+            } else if (searchValue === 'temple' || searchValue === 'temples') {
+                recommendations = data.temples;
+            } else if (searchValue === 'country' || searchValue === 'countries') {
+                recommendations = data.countries;
+            }
+
+            // If there are recommendations, display them
+            if (recommendations.length > 0) {
+                recommendations.forEach(place => {
+                    const recommendationElement = document.createElement('div');
+                    recommendationElement.classList.add('recommendation');
+                    recommendationElement.innerHTML = `
+                        <h3>${place.name}</h3>
+                        <img src="${place.imageUrl}" alt="${place.name}">
+                        <p>${place.description}</p>
+                    `;
+                    recommendationsContainer.appendChild(recommendationElement);
+                });
+            } else {
+                recommendationsContainer.innerHTML = '<p>No results found. Try a different search keyword.</p>';
+            }
+        }
+
+        // Reset Button Functionality
+        function resetSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('recommendations').innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>
